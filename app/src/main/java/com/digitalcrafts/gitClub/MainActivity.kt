@@ -6,11 +6,12 @@ import com.digitalcrafts.gitClub.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private var binding: ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val inflated = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(inflated.root)
+        binding = inflated
     }
 }
