@@ -1,5 +1,6 @@
 package com.digitalcrafts.gitClub.features.repoList
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.digitalcrafts.gitClub.common.arch.BaseViewModel
@@ -22,9 +23,11 @@ class RepoListViewModel(
     private suspend fun loadRepos() {
 
         val repos = repoRepositories
-            .getRepositoriesFor("BallTrap")
+            .getRepositoriesFor("flocking")
             .logError()
             .getOrNull()
+
+        Log.d(TAG, "Received list of ${repos?.size}")
 
         _obsRepositories.postValue(repos)
     }

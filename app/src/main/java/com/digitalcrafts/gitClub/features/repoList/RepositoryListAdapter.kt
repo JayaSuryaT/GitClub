@@ -1,10 +1,13 @@
 package com.digitalcrafts.gitClub.features.repoList
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.digitalcrafts.gitClub.common.loadImage
 import com.digitalcrafts.gitClub.data.models.Repository
 import com.digitalcrafts.gitClub.databinding.ItemRepositoryBinding
 
@@ -22,9 +25,21 @@ class RepositoryListAdapter : ListAdapter<Repository,
     inner class RepositoryViewHolder(private val item: ItemRepositoryBinding) :
         RecyclerView.ViewHolder(item.root) {
 
+        private fun TextView.setTextAndShow(text: String?) {
+            if (text.isNullOrEmpty()) this.visibility = View.GONE
+            else this.visibility = View.VISIBLE
+            this.text = text
+        }
+
         fun bind(data: Repository) {
             item.apply {
-                tvRepoName.text = data.name
+                tvRepoName.setTextAndShow(data.name)
+                tvRepoOwnerName.setTextAndShow(data.owner.login)
+                tvDescription.setTextAndShow(data.description)
+                ivAvatar.loadImage(data.owner.avatarUrl)
+                tvLanguage.setTextAndShow(data.language)
+                tvStargazersCount.setTextAndShow(data.stargazersCount.toString())
+                tvWatchersCount.setTextAndShow(data.watchersCount.toString())
             }
         }
     }

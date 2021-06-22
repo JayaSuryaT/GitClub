@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_marginVertical="4dp"
     android:elevation="8dp"
-    app:cardBackgroundColor="@color/purple_200"
     app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,14 +13,119 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tvRepoName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvAvatar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:cardCornerRadius="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/white"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:contentDescription="@string/cd_repo_owner_avatar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvRepoName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:maxLines="1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/mcvAvatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mcvAvatar"
+            app:layout_constraintTop_toTopOf="@+id/mcvAvatar"
             tools:text="Flocking Simulation" />
+
+        <TextView
+            android:id="@+id/tvRepoOwnerName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:maxLines="1"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mcvAvatar"
+            tools:text="Flocking Simulation" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:maxLines="3"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRepoOwnerName"
+            tools:text="Boids is an artificial life program, developed by Craig Reynolds in 1986, which simulates the flocking behaviour of birds" />
+
+        <TextView
+            android:id="@+id/tvLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+            tools:text="Kotlin" />
+
+        <ImageView
+            android:id="@+id/ivStar"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/cd_repository_stargazers"
+            android:src="@drawable/icon_star"
+            app:layout_constraintBottom_toBottomOf="@+id/tvLanguage"
+            app:layout_constraintStart_toEndOf="@+id/tvLanguage"
+            app:layout_constraintTop_toTopOf="@+id/tvLanguage"
+            app:tint="@color/gold" />
+
+        <TextView
+            android:id="@+id/tvStargazersCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivStar"
+            app:layout_constraintStart_toEndOf="@+id/ivStar"
+            app:layout_constraintTop_toTopOf="@+id/ivStar"
+            tools:text="32" />
+
+        <ImageView
+            android:id="@+id/ivWatchers"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/cd_repository_watchers"
+            android:src="@drawable/icon_eye"
+            app:layout_constraintBottom_toBottomOf="@+id/tvLanguage"
+            app:layout_constraintStart_toEndOf="@+id/tvStargazersCount"
+            app:layout_constraintTop_toTopOf="@+id/tvLanguage"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/tvWatchersCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivStar"
+            app:layout_constraintStart_toEndOf="@+id/ivWatchers"
+            app:layout_constraintTop_toTopOf="@+id/ivStar"
+            tools:text="32" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

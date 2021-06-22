@@ -16,12 +16,14 @@ public class RepoRepositories : DataSourceRepositories {
     override suspend fun getRepositoriesFor(searchKey: String):
             KResult<List<Repository>> = wrapAsResult {
 
-        val cachedRepos = cacheClient.getRepos(searchKey)
+        val likeKey = "%$searchKey%"
+
+        val cachedRepos = cacheClient.getRepos(likeKey)
         if (!cachedRepos.isNullOrEmpty()) return@wrapAsResult cachedRepos
 
         val networkResponse = networkClient.searchForRepositories(searchKey).items
         if (!networkResponse.isNullOrEmpty()) cacheClient.saveRepositories(networkResponse)
-        cacheClient.getRepos(searchKey)
+        cacheClient.getRepos(likeKey)
     }
 
     override suspend fun getAllCachedRepositories(): KResult<List<Repository>> = wrapAsResult {
