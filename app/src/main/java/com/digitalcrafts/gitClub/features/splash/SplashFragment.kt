@@ -9,4 +9,6 @@ class SplashFragment : BaseAbsFragment<SplashViewModel,
         FragmentSplashBinding>(FragmentSplashBinding::inflate) {
 
     override val viewModel: SplashViewModel by viewModels()
+
+
 }
