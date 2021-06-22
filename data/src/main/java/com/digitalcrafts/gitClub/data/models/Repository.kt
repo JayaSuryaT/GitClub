@@ -14,8 +14,8 @@ public data class Repository(
 
     @PrimaryKey val id: Int,
     val name: String,
-    val description: String,
-    val language: String,
+    val description: String?,
+    val language: String?,
     val url: String,
     val fork: Boolean,
     val archived: Boolean,

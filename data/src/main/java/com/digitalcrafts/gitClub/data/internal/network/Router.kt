@@ -9,7 +9,7 @@ internal object Router {
     private fun base(): String = "https://api.github.com/"
 
     fun searchRepositories(name: String): HttpRequestBuilder.() -> Unit = {
-        url.takeFrom(base() + "search/")
-        parameter("repositories", name)
+        url.takeFrom(base() + "search/repositories")
+        parameter("q", name)
     }
 }
