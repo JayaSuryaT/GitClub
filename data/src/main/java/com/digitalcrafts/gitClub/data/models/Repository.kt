@@ -20,6 +20,7 @@ public data class Repository(
     val fork: Boolean,
     val archived: Boolean,
     @SerialName(OWNER) @Embedded(prefix = "_owner") val owner: Owner,
+    @SerialName(HTML_URL) @ColumnInfo(name = HTML_URL) val htmlUrl: String,
     @SerialName(FULL_NAME) @ColumnInfo(name = FULL_NAME) val fullName: String,
     @SerialName(PUSHED_AT) @ColumnInfo(name = PUSHED_AT) val pushedAt: String,
     @SerialName(UPDATED_AT) @ColumnInfo(name = UPDATED_AT) val updatedAt: String,
@@ -34,6 +35,7 @@ public data class Repository(
         const val REPO_TABLE_NAME: String = "repository"
 
         private const val OWNER: String = "owner"
+        private const val HTML_URL: String = "html_url"
         private const val FULL_NAME: String = "full_name"
         private const val STARGAZERS_COUNT: String = "stargazers_count"
         private const val WATCHERS_COUNT: String = "watchers_count"

@@ -1,15 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:paddingVertical="16dp"
     tools:context=".features.repoList.RepositoriesListFragment">
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcvSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="4dp"
+        android:elevation="8dp"
+        app:cardCornerRadius="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pbLoading">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableEnd="@drawable/icon_search"
+            android:drawableTint="?attr/colorSecondary"
+            android:hint="@string/search_repositories"
+            android:imeOptions="actionSearch"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="16dp"
+            android:singleLine="true"
+            tools:targetApi="m" />
+
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvReposList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        tools:listitem="@layout/item_repository" />
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:paddingHorizontal="8dp"
+        android:requiresFadingEdge="vertical"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarThumbVertical="?attr/colorSecondary"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mcvSearch"
+        tools:listitem="@layout/item_repository"
+        tools:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/ivSearchRepositories"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.1"
+        android:src="@drawable/icon_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mcvSearch"
+        app:layout_constraintWidth_percent="0.5"
+        app:tint="?attr/colorSecondary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

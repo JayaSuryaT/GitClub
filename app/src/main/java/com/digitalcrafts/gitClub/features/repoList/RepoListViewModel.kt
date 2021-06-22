@@ -1,6 +1,5 @@
 package com.digitalcrafts.gitClub.features.repoList
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.digitalcrafts.gitClub.common.arch.BaseViewModel
@@ -17,17 +16,32 @@ class RepoListViewModel(
     val obsRepositories: LiveData<List<Repository>> get() = _obsRepositories
 
     init {
-        ioScope.launch { loadRepos() }
+        ioScope.launch { doWhileLoading { loadAllReposFromCache() } }
     }
 
-    private suspend fun loadRepos() {
+    fun searchForRepositories(searchKey: String) {
+
+        ioScope.launch {
+            doWhileLoading {
+
+                val repos = repoRepositories
+                    .getRepositoriesFor(searchKey)
+                    .logError()
+                    .getOrNull()
+                    ?.sortedByDescending { it.stargazersCount }
+
+                _obsRepositories.postValue(repos)
+            }
+        }
+    }
+
+    private suspend fun loadAllReposFromCache() {
 
         val repos = repoRepositories
-            .getRepositoriesFor("flocking")
+            .getAllCachedRepositories()
             .logError()
             .getOrNull()
-
-        Log.d(TAG, "Received list of ${repos?.size}")
+            ?.sortedByDescending { it.stargazersCount }
 
         _obsRepositories.postValue(repos)
     }

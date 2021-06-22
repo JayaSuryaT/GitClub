@@ -1,6 +1,8 @@
 package com.digitalcrafts.gitClub.common.arch
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.digitalcrafts.gitClub.data.models.KResult
 import kotlinx.coroutines.CoroutineScope
@@ -13,6 +15,9 @@ open class BaseViewModel : ViewModel() {
     @Suppress("PropertyName")
     protected val TAG: String by lazy { javaClass.simpleName }
 
+    protected val _obsIsDataLoading: MutableLiveData<Boolean> = MutableLiveData()
+    val obsIsDataLoading: LiveData<Boolean> get() = _obsIsDataLoading
+
     private val jobDelegate: Lazy<Job> = lazy { SupervisorJob() }
     private val job by jobDelegate
     protected val ioScope: CoroutineScope by lazy { CoroutineScope(Dispatchers.IO + job) }
@@ -20,6 +25,12 @@ open class BaseViewModel : ViewModel() {
     protected inline fun <reified T> KResult<T>.logError(): KResult<T> {
         if (this is KResult.Error) Log.e(TAG, this.toString())
         return this
+    }
+
+    protected suspend fun doWhileLoading(logic: suspend () -> Unit) {
+        _obsIsDataLoading.postValue(true)
+        logic()
+        _obsIsDataLoading.postValue(false)
     }
 
     override fun onCleared() {
