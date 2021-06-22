@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.splash.SplashFragment">
+    tools:context=".features.repoList.RepositoriesListFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvReposList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textSize="64sp" />
+        android:padding="16dp"
+        tools:listitem="@layout/item_repository" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

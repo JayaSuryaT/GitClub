@@ -9,6 +9,25 @@
         android:id="@+id/splashFragment"
         android:name="com.digitalcrafts.gitClub.features.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/toRepoList"
+            app:destination="@id/repositoriesListFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/repositoriesListFragment"
+        android:name="com.digitalcrafts.gitClub.features.repoList.RepositoriesListFragment"
+        android:label="fragment_repositories_list"
+        tools:layout="@layout/fragment_repositories_list" />
 
 </navigation>
