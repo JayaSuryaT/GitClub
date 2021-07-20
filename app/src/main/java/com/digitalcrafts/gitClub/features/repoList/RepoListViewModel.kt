@@ -3,13 +3,12 @@ package com.digitalcrafts.gitClub.features.repoList
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.digitalcrafts.gitClub.common.arch.BaseViewModel
-import com.digitalcrafts.gitClub.data.dataSources.definitions.DataSourceRepositories
-import com.digitalcrafts.gitClub.data.dataSources.repos.RepoRepositories
-import com.digitalcrafts.gitClub.data.models.Repository
+import com.digitalcrafts.gitClub.data.dataSources.definitons.DataSourceRepositories
+import com.digitalcrafts.gitClub.data.dataSources.models.Repository
 import kotlinx.coroutines.launch
 
 class RepoListViewModel(
-    private val repoRepositories: DataSourceRepositories = RepoRepositories()
+    private val repoRepositories: DataSourceRepositories
 ) : BaseViewModel() {
 
     private val _obsRepositories: MutableLiveData<List<Repository>> = MutableLiveData()

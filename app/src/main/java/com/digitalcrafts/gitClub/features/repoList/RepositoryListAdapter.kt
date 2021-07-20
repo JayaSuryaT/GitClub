@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.digitalcrafts.gitClub.R
 import com.digitalcrafts.gitClub.common.loadImage
-import com.digitalcrafts.gitClub.data.models.Repository
+import com.digitalcrafts.gitClub.data.dataSources.models.Repository
 import com.digitalcrafts.gitClub.databinding.ItemRepositoryBinding
 
 class RepositoryListAdapter(

@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.digitalcrafts.gitClub.common.arch.BaseAbsFragment
 import com.digitalcrafts.gitClub.common.toggleVisibility
-import com.digitalcrafts.gitClub.data.models.Repository
+import com.digitalcrafts.gitClub.data.dataSources.models.Repository
 import com.digitalcrafts.gitClub.databinding.FragmentRepositoriesListBinding
 
 
