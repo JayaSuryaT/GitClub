@@ -4,7 +4,7 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
-import com.digitalcrafts.gitClub.data.internal.cache.CacheClient
+import com.digitalcrafts.gitClub.data.internal.data.cache.CacheClient
 
 internal class ContextProvider : ContentProvider() {
 

@@ -1,10 +1,10 @@
-package com.digitalcrafts.gitClub.data.internal.cache
+package com.digitalcrafts.gitClub.data.internal.data.cache
 
-import android.annotation.SuppressLint
 import android.content.Context
 import androidx.room.Room
+import com.digitalcrafts.gitClub.data.internal.data.cache.definitons.GitClubDatabase
 
-@SuppressLint("StaticFieldLeak")
+
 internal object CacheClient {
 
     private const val ROOM_DB_NAME: String = "gitClubDb"

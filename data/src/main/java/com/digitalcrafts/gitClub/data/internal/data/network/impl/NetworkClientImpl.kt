@@ -1,6 +1,7 @@
-package com.digitalcrafts.gitClub.data.internal.network
+package com.digitalcrafts.gitClub.data.internal.data.network.impl
 
-import com.digitalcrafts.gitClub.data.internal.models.RemoteRepositoryResponse
+import com.digitalcrafts.gitClub.data.internal.data.network.definitons.NetworkClient
+import com.digitalcrafts.gitClub.data.internal.data.network.dtos.RemoteRepositoryResponse
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.features.*
@@ -9,7 +10,7 @@ import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.logging.*
 import io.ktor.client.request.*
 
-internal class NetworkClient {
+internal class NetworkClientImpl : NetworkClient {
 
     private val client: HttpClient by lazy {
 
@@ -34,8 +35,8 @@ internal class NetworkClient {
         }
     }
 
-    suspend fun searchForRepositories(repositoryName: String): RemoteRepositoryResponse {
-        val route = Router.searchRepositories(repositoryName)
+    override suspend fun searchForRepositories(searchKey: String): RemoteRepositoryResponse {
+        val route = Router.searchRepositories(searchKey)
         return client.get(block = route)
     }
 }

@@ -1,4 +1,4 @@
-package com.digitalcrafts.gitClub.data.internal.network
+package com.digitalcrafts.gitClub.data.internal.data.network.impl
 
 import io.ktor.client.request.*
 import io.ktor.http.*
