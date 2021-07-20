@@ -8,7 +8,9 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.digitalcrafts.gitClub.common.arch.BaseAbsFragment
+import com.digitalcrafts.gitClub.common.arch.ViewModelFactory
 import com.digitalcrafts.gitClub.common.toggleVisibility
+import com.digitalcrafts.gitClub.data.dataSources.impl.RepoRepositories
 import com.digitalcrafts.gitClub.data.dataSources.models.Repository
 import com.digitalcrafts.gitClub.databinding.FragmentRepositoriesListBinding
 
@@ -18,7 +20,9 @@ class RepositoriesListFragment : BaseAbsFragment<RepoListViewModel,
 
     private val repoAdapter: RepositoryListAdapter by lazy { RepositoryListAdapter(::onItemSelected) }
 
-    override val viewModel: RepoListViewModel by viewModels()
+    override val viewModel: RepoListViewModel by viewModels {
+        ViewModelFactory { RepoListViewModel(RepoRepositories()) }
+    }
 
     override fun setupViews(): FragmentRepositoriesListBinding.() -> Unit = {
 

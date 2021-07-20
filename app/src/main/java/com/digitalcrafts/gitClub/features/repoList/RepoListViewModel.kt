@@ -21,6 +21,7 @@ class RepoListViewModel(
     fun searchForRepositories(searchKey: String) {
 
         ioScope.launch {
+
             doWhileLoading {
 
                 val repos = repoRepositories
