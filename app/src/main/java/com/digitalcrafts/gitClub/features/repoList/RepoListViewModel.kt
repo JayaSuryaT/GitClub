@@ -5,9 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import com.digitalcrafts.gitClub.common.arch.BaseViewModel
 import com.digitalcrafts.gitClub.data.dataSources.definitons.DataSourceRepositories
 import com.digitalcrafts.gitClub.data.dataSources.models.Repository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RepoListViewModel(
+@HiltViewModel
+class RepoListViewModel @Inject constructor(
     private val repoRepositories: DataSourceRepositories
 ) : BaseViewModel() {
 

@@ -7,18 +7,18 @@ import com.digitalcrafts.gitClub.data.internal.data.cache.definitons.RepositoryD
 import com.digitalcrafts.gitClub.data.internal.data.cache.entities.RepositoryEntity
 import com.digitalcrafts.gitClub.data.internal.data.network.definitons.NetworkClient
 import com.digitalcrafts.gitClub.data.internal.data.network.dtos.RepositoryDto
-import com.digitalcrafts.gitClub.data.internal.data.network.impl.NetworkClientImpl
 import com.digitalcrafts.gitClub.data.internal.mappers.definitions.DtoToEntityMapper
 import com.digitalcrafts.gitClub.data.internal.mappers.definitions.EntityToDomainMapper
 import com.digitalcrafts.gitClub.data.internal.mappers.impl.RepositoryDtoToEntityMapper
 import com.digitalcrafts.gitClub.data.internal.mappers.impl.RepositoryEntityToDomainMapper
 import com.digitalcrafts.gitClub.data.internal.utils.wrapAsResult
 import com.digitalcrafts.gitClub.data.models.KResult
+import javax.inject.Inject
 
-public class RepoRepositories : DataSourceRepositories {
-
-    private val networkClient: NetworkClient by lazy { NetworkClientImpl() }
-    private val cacheClient: RepositoryDao by lazy { CacheClient.dataBase.repositoryDao() }
+public class RepoRepositories @Inject internal constructor(
+    private val networkClient: NetworkClient,
+    private val cacheClient: RepositoryDao = CacheClient.dataBase.repositoryDao(),
+) : DataSourceRepositories {
 
     private val repoDomainMapper: EntityToDomainMapper<RepositoryEntity, Repository> by lazy {
         RepositoryEntityToDomainMapper()

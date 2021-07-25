@@ -20,4 +20,10 @@ internal object CacheClient {
             .databaseBuilder(context, GitClubDatabase::class.java, ROOM_DB_NAME)
             .build()
     }
+
+    internal fun getDatabase(context: Context): GitClubDatabase {
+        return Room
+            .databaseBuilder(context, GitClubDatabase::class.java, ROOM_DB_NAME)
+            .build()
+    }
 }

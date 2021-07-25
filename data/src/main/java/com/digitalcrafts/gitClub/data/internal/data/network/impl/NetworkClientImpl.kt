@@ -9,8 +9,9 @@ import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.logging.*
 import io.ktor.client.request.*
+import javax.inject.Inject
 
-internal class NetworkClientImpl : NetworkClient {
+internal class NetworkClientImpl @Inject constructor() : NetworkClient {
 
     private val client: HttpClient by lazy {
 
