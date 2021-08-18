@@ -3,10 +3,12 @@ package com.digitalcrafts.gitClub.features.splash
 import androidx.fragment.app.viewModels
 import com.digitalcrafts.gitClub.common.arch.BaseAbsFragment
 import com.digitalcrafts.gitClub.databinding.FragmentSplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
+@AndroidEntryPoint
 class SplashFragment : BaseAbsFragment<SplashViewModel,
         FragmentSplashBinding>(FragmentSplashBinding::inflate) {
 

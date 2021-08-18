@@ -2,7 +2,6 @@ package com.digitalcrafts.gitClub.data.dataSources.impl
 
 import com.digitalcrafts.gitClub.data.dataSources.definitons.DataSourceRepositories
 import com.digitalcrafts.gitClub.data.dataSources.models.Repository
-import com.digitalcrafts.gitClub.data.internal.data.cache.CacheClient
 import com.digitalcrafts.gitClub.data.internal.data.cache.definitons.RepositoryDao
 import com.digitalcrafts.gitClub.data.internal.data.cache.entities.RepositoryEntity
 import com.digitalcrafts.gitClub.data.internal.data.network.definitons.NetworkClient
@@ -17,7 +16,7 @@ import javax.inject.Inject
 
 public class RepoRepositories @Inject internal constructor(
     private val networkClient: NetworkClient,
-    private val cacheClient: RepositoryDao = CacheClient.dataBase.repositoryDao(),
+    private val cacheClient: RepositoryDao,
 ) : DataSourceRepositories {
 
     private val repoDomainMapper: EntityToDomainMapper<RepositoryEntity, Repository> by lazy {
